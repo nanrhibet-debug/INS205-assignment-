@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INS205 Assessment - Cisco (Nanrhibet)</title>
+    
+    <style>
+        /* --- GENERAL PAGE STYLING --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container box to structure the layout cleanly without external libraries */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* TASK 1: Visually distinct, centered page heading using pure CSS spacing and borders */
+        h1 {
+            text-align: center;
+            color: #1a3a5f;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #1a3a5f;
+            padding-bottom: 10px;
+        }
+
+        /* --- TASK 2: Section layout mechanics --- */
+        section {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+        }
+
+        /* Clean visual borders separating sections to avoid structural clutter */
+        section:not(:last-child) {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        /* Semantic profile list alignment */
+        .profile-info {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile-info li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Bolding labels and enforcing inline alignment spacing */
+        .profile-info strong {
+            color: #1a3a5f;
+            display: inline-block;
+            width: 180px;
+        }
+
+        /* --- TASK 2: Contact Section & Interactive Mailto Button --- */
+        .contact-section {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        /* Base styles for the submission button. 
+           The background-color property is explicitly overwritten dynamically by the required script below. */
+        .btn-email {
+            display: inline-block;
+            padding: 12px 30px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Clean CSS micro-interactions for button responsiveness */
+        .btn-email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-email:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>INS205 Static Web Application</h1>
+
+        <section id="about-me">
+            <h2>About Me</h2>
+            <ul class="profile-info">
+                <li><strong>Full Name:</strong> Nanrhibet</li>
+                <li><strong>Department:</strong> Computer Science</li>
+                <li><strong>Matriculation No:</strong> UJ/2024/NS/0342</li>
+                <li><strong>Level:</strong> 200 Level</li>
+            </ul>
+            <p>
+                I am an undergraduate student currently exploring core computing paradigms, web architecture, and database principles. Outside of institutional requirements, my focus lies in studying system hardware architecture, performance optimization, and custom computing build mechanics.
+            </p>
+        </section>
+
+        <section id="course-details">
+            <h2>Project Description</h2>
+            <p>
+                This single-document interface serves as the primary practical continuous assessment submission for the <strong>INS205 (Introduction to Information Systems & Web Technologies)</strong> module. 
+            </p>
+            <p>
+                The explicit intent of this project is to showcase strict adherence to semantic web markup validation rules using pure native HTML5 elements, bound tightly with internal cascading style sheet abstractions to handle typography, presentation logic, and device scaling. 
+            </p>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Get In Touch</h2>
+            <p>Click below to connect with me directly through the university-mapped communication protocols.</p>
+            <a href="mailto:nanrhibet@gmail.com" id="send-btn" class="btn-email">Send Email</a>
+        </section>
+    </div>
+
+    <script> 
+        /* ------------------------------------------------------- 
+        Matric-number → button colour 
+        Replace the matric value below with your own number. 
+        ------------------------------------------------------- */ 
+        const matric = "UJ/2024/NS/0342"; // <-- CHANGE THIS TO YOUR MAT. NO. 
+        
+        /* CHANGE NOTHING BEYOND THIS POINT - CHANGE NOTHING BEYOND THIS POINT */ 
+        function hashString(str) { 
+            let hash = 0; 
+            for (let i = 0; i < str.length; i++) { 
+                hash = (hash * 31 + str.charCodeAt(i)) >>> 0; 
+            } 
+            return hash; 
+        } 
+        
+        // Normalise input 
+        const normalised = matric.trim().toUpperCase(); 
+        
+        // Map the hash to a hue value between 0 and 359 degrees 
+        const hue = hashString(normalised) % 360; 
+        
+        // Build an HSL colour: fixed saturation & lightness, varying hue 
+        const buttonColour = `hsl(${hue}, 65%, 45%)`; 
+        
+        // Apply the colour to the Send Email button 
+        document.getElementById("send-btn").style.background = buttonColour; 
+    </script> 
+
+</body>
+</html>
